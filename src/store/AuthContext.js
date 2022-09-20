@@ -10,7 +10,7 @@ const AuthContext = createContext({
 });
 
 //helper function to culculate time to logout user automatically when inactive
-const calculateRemainingTime = () => {
+const calculateRemainingTime = (expirationTime) => {
   const currentTime = new Date().getTime();
   const expTime = expirationTime;
   const remainingTime = expTime - currentTime;
