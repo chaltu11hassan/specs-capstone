@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../store/authContext";
 import axios from "axios";
 
-const baseURL = "http://localhost:3000";
+const baseURL = "http://localhost:4000";
 
 const Auth = () => {
   const authCtx = useContext(AuthContext);
