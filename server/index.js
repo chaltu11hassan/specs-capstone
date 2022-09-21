@@ -8,6 +8,7 @@ const { sequelize } = require("./controllers/seed");
 const { User } = require("./models/user");
 const { Post } = require("./models/post");
 
+
 const { isAuthenticated } = require("./middleware/isAuthenticated");
 
 const { register, login } = require("./controllers/auth");
@@ -24,6 +25,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+User.hasMany(Post);
+Post.belongsTo(User);
+
 app.post("/register", register);
 app.post("/login", login);
 
@@ -35,12 +40,11 @@ app.post("/posts", addNewPost, isAuthenticated);
 app.put("/posts/:id", editPost, isAuthenticated);
 app.delete("/posts/:id", deletePost, isAuthenticated);
 
-User.hasMany(Post);
-Post.belongsTo(User);
 
-//sequelize.sync({ force: true }) //drops tables if any exists
-sequelize
-  .sync()
+
+sequelize.sync({ force: true }) //drops tables if any exists
+// sequelize
+//   .sync()
   .then(() => {
     app.listen(SERVER_PORT, () => {
       console.log(`Server running on port ${SERVER_PORT}`);

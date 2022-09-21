@@ -4,18 +4,19 @@ const { SECRET } = process.env;
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { restart } = require("nodemon");
-const { useFetcher } = require("react-router-dom");
+
+// const { restart } = require("nodemon");
+
 
 const { User } = require("../models/user");
 
 const createToken = (username, id) => {
-  return jwt.sign({ username, id }, { SECRET }, { expiresIn: "2 days" });
+  return jwt.sign({ username, id }, SECRET , { expiresIn: "2 days" });
 };
 
 module.exports = {
-  register: async (req, rrs) => {
-    console.log("register");
+  register: async (req, res) => {
+    console.log("register", SECRET);
     try {
       const { username, password } = req.body;
       let userFound = await User.findOne({ where: { username } });

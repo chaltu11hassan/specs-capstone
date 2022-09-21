@@ -12,10 +12,10 @@ const sequelize = new Sequelize(
   DATABASE_PASSWORD,
   {
     dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: false,
-      },
+    pool: {
+      max: 9,
+      min: 0,
+      idle: 10000,
     },
   }
 );

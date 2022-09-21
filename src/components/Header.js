@@ -31,7 +31,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink style={styleActiveLink} to="form">
+              <NavLink style={styleActiveLink} to="posts">
                 Posts
               </NavLink>
             </li>
