@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../store/authContext";
 import axios from "axios";
 
-const baseURL = "http://localhost:4000";
+
+const baseURL = "http://localhost:3000";
 
 const Auth = () => {
   const authCtx = useContext(AuthContext);
@@ -33,7 +34,7 @@ const Auth = () => {
   };
 
   return (
-    <main>
+    <main className="auth-main">
       <h2>Welcome to Miaa'waa: a delicious journey</h2>
       <form className="auth-form" onSubmit={submitHandler}>
         <input
@@ -47,7 +48,7 @@ const Auth = () => {
         />
         <input
           className="auth-input"
-          type="text"
+          type="password"
           placeholder="enter password"
           value={password}
           onChange={(event) => {

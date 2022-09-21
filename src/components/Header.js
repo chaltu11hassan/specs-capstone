@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../store/authContext";
 
+
 const Header = () => {
   const authCtx = useContext(AuthContext);
 
   const styleActiveLink = ({ isActive }) => {
     return {
-      color: isActive ? "yellow" : "",
+      color: isActive ? "#debc81" : "#ffffff",
     };
   };
 
