@@ -80,6 +80,62 @@ nav{
   align-items: center;
 }
 
-/* -------------------------------------------------------------------------------- */
+/* ---------------------------Posts----------------------------------------------------- */
+
+.posts-main{
+  align-items: center;
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-form{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  width: 300px;
+  height: 250px;
+  padding: 20px;
+  text-align: center;
+  border: solid bisque 5px;
+  border-radius: 5px;
+  /* align-items: center; */
+}
+
+
+.post-input{
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+}
+
+.post-textarea{
+  display: flex;
+  padding: 30px;
+  margin: 10px;
+}
+
+.status-container{
+  display: flex;
+  justify-content:center;
+  
+}
+
+.status-buttons{
+  padding: 5px;
+  margin: 5px;
+}
+
+.post-button{
+  text-align:center;
+  align-items: center;
+  margin: 10px;
+}
+
 
 
