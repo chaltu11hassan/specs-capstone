@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../store/authContext";
 
-
 const Header = () => {
   const authCtx = useContext(AuthContext);
 
@@ -12,10 +11,12 @@ const Header = () => {
     };
   };
 
+  //onClick={() => {<NavLink style={styleActiveLink} to="/" />}}
+
   return (
     <header className="App-header">
       <div className="app-name">
-        <h2>Miaa'waa</h2>
+        <h2><a id="fakelogo" href="/home">Miaa'waa</a></h2>
       </div>
       <nav>
         {authCtx.token ? (

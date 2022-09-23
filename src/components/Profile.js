@@ -2,15 +2,19 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../store/authContext";
 
+const baseURL = "http://localhost:4000";
+
 const Profile = () => {
   const { userId, token } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
 
   const getMyPosts = useCallback(() => {
     axios
-      .get(`/userposts/${userId}`)
+      .get(`${baseURL}/userposts/${userId}`)
       .then((res) => {
+        console.log(res.data);
         setPosts(res.data);
+        console.log(posts)
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +28,7 @@ const Profile = () => {
   const updateMyPost = (id, status) => {
     axios
       .put(
-        `/posts/${id}`,
+        `${baseURL}/posts/${id}`,
         { status: !status },
         { headers: { authorization: token } }
       )
@@ -38,7 +42,7 @@ const Profile = () => {
 
   const deleteMyPost = (id) => {
     axios
-      .delete(`/posts/${id}`, { headers: { authorization: token } })
+      .delete(`${baseURL}/posts/${id}`, { headers: { authorization: token } })
       .then(() => {
         getMyPosts();
       })
@@ -53,15 +57,15 @@ const Profile = () => {
         <h4>{post.user.username}</h4>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
-        {userId === post.userI && (
-          <div>
+        {userId === post.userId && (
+          <div className="edit-post-buttons">
             <button
               className="edit-post-button"
               onClick={() => {
-                updateMyPost(post.id, post.privatStatus);
+                updateMyPost(post.id, post.privateStatus);
               }}
             >
-              {post.privatStatus ? "Make Public Post" : "Make Private Post"}
+              {post.privateStatus ? "Make Public Post" : "Make Private Post"}
             </button>
             <button
               className="edit-post-button"
@@ -79,9 +83,9 @@ const Profile = () => {
   });
 
   return postsMapped.length >= 1 ? (
-    <main>{postsMapped}</main>
+    <main className="post-card-main">{postsMapped}</main>
   ) : (
-    <main>
+    <main className="no-posts-main">
       <h2>Add a post, you dont have any yet!</h2>
     </main>
   );

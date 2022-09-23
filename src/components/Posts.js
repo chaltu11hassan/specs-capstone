@@ -3,6 +3,8 @@ import AuthContext from "../store/authContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const baseURL = "http://localhost:4000"
+
 const Posts = () => {
   const { token, userId } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -11,27 +13,30 @@ const Posts = () => {
   const [content, setContent] = useState("");
   const [status, setStatus] = useState(true);
 
-  const submitHandler = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     axios
       .post(
-        "/posts",
+        `${baseURL}/posts`,
         { title, content, status, userId },
-        { headers: { authorization: token } }
+        {
+          headers: {
+            authorization: token,
+          },
+        }
       )
       .then(() => {
         navigate("/profile");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
     <main className="posts-main">
-      <h1>NO POSTS YET , Add a post below</h1>
-      <form className="post-form" onSubmit={submitHandler}>
+      
+      <form className="post-form" onSubmit={handleSubmit}>
+        Create New Post
         <input
           className="post-input"
           type="text"
@@ -50,6 +55,7 @@ const Posts = () => {
             setContent(event.target.value);
           }}
         />
+        
         <div className="status-container">
           <div className="status-buttons">
             <input

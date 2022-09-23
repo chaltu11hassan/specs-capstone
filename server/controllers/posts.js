@@ -15,6 +15,7 @@ module.exports = {
           },
         ],
       });
+      console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
       console.log(error);
@@ -26,9 +27,10 @@ module.exports = {
     console.log("current posts");
     try {
       const posts = await Post.findAll({
-        where: { privateStatus: true },
+        where: { userId: req.params.userId },
         include: [{ model: User, required: true, attributes: ["username"] }],
       });
+      console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
       console.log(error);
@@ -42,6 +44,7 @@ module.exports = {
     try {
       const { title, content, status, userId } = req.body;
       await Post.create({ title, content, privateStatus: status, userId });
+      ////////////////////////////////////////////////////////////////
       res.sendStatus(200);
     } catch (error) {
       console.log(error);

@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import AuthContext from "../store/authContext";
 
+const baseURL = "http://localhost:4000";
+
 const Home = () => {
   const { userId } = useContext(AuthContext);
 
@@ -9,11 +11,15 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("/posts")
+      .get(`${baseURL}/posts`)
       .then((res) => {
         if (userId) {
-          const otherPosts = res.data.filter((post) => userId !== post.userId);
-          setPosts(otherPosts);
+          // const otherPosts = res.data.filter((post) => userId !== post.userId);
+          //       setPosts(otherPosts)
+          //   } else {
+          //       setPosts(res.data)
+          //   }
+          setPosts(res.data);
         }
       })
       .catch((error) => {
@@ -32,10 +38,10 @@ const Home = () => {
   });
 
   return postsMapped.length >= 1 ? (
-    <main>{postsMapped}</main>
+    <main className="post-card-main">{postsMapped}</main>
   ) : (
-    <main>
-      <h2>NO POSTS YET</h2>
+    <main className="no-posts">
+      <h2>Add a post, you dont have any yet!</h2>
     </main>
   );
 };

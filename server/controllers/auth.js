@@ -31,7 +31,7 @@ module.exports = {
           newUser.dataValues.id
         );
         console.log("TOKEN", token);
-        const expirationTime = Date.now() + 1000 * 60 * 60 * 24;
+        const expirationTime = Date.now() + 1000 * 60 * 60 * 48;
 
         res.status(200).send({
           username: newUser.dataValues.username,
@@ -65,7 +65,7 @@ module.exports = {
             userFound.dataValues.username,
             userFound.dataValues.id
           );
-          const expirationTime = Date.now() + 1000 * 60 * 60 * 24;
+          const expirationTime = Date.now() + 1000 * 60 * 60 * 48;
           res.status(200).send({
             username: userFound.dataValues.username,
             userId: userFound.dataValues.id,

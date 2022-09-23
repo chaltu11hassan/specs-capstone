@@ -24,7 +24,7 @@ const Auth = () => {
     axios
       .post(register ? `${baseURL}/register` : `${baseURL}/login`, body)
       .then((res) => {
-        console.log("after authorization", res.data);
+        console.log("after authorization", res.data.userId);
         authCtx.login(res.data.token, res.data.expirationTime, res.data.userId);
       })
       .catch((err) => {
