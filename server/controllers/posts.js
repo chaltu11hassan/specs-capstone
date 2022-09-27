@@ -8,13 +8,13 @@ module.exports = {
     try {
       const posts = await posts.findAll({
         where: { privateStatus: false },
-        include: [
-          {
-            model: users,
-            required: true,
-            attributes: ["username"],
-          },
-        ],
+        // include: [
+        //   {
+        //     model: users,
+        //     required: true,
+        //     attributes: ["username"],
+        //   },
+        // ],
       });
       // console.log(posts);
       res.status(200).send(posts);

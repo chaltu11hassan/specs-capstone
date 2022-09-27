@@ -1,10 +1,7 @@
 const { DataTypes } = require("sequelize");
-
 const { sequelize } = require("../controllers/seed");
-
-const users = require("./user");
-
-const posts = require("./post");
+// const users = require("./user");
+// const posts = require("./post");
 
 console.log(typeof users);
 
@@ -18,7 +15,7 @@ module.exports = {
     },
 
     //these are not needed when using ORM
-    
+
     // user_id: {
     //   type: DataTypes.INTEGER,
     //   references: {

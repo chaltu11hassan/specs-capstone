@@ -5,8 +5,6 @@ const { SECRET } = process.env;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// const { restart } = require("nodemon");
-
 const { users } = require("../models/user");
 
 const createToken = (username, id) => {

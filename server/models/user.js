@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 const { sequelize } = require("../controllers/seed");
 
 module.exports = {

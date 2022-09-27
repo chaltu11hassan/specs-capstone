@@ -1,8 +1,7 @@
 const { DataTypes } = require("sequelize");
-
 const { sequelize } = require("../controllers/seed");
 
-const users = require("./user");
+// const users = require("./user");
 
 module.exports = {
   posts: sequelize.define("posts", {
