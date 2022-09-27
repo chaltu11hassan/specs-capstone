@@ -7,11 +7,10 @@ const jwt = require("jsonwebtoken");
 
 // const { restart } = require("nodemon");
 
-
-const { User } = require("../models/user");
+const { users } = require("../models/user");
 
 const createToken = (username, id) => {
-  return jwt.sign({ username, id }, SECRET , { expiresIn: "2 days" });
+  return jwt.sign({ username, id }, SECRET, { expiresIn: "2 days" });
 };
 
 module.exports = {
@@ -19,23 +18,23 @@ module.exports = {
     console.log("register", SECRET);
     try {
       const { username, password } = req.body;
-      let userFound = await User.findOne({ where: { username } });
+      let userFound = await users.findOne({ where: { username } });
       if (userFound) {
         res.status(400).send("cannot create new account");
       } else {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-        const newUser = await User.create({ username, hashedPass: hash });
+        const newUser = await users.create({ username, hashedPass: hash });
         const token = createToken(
           newUser.dataValues.username,
-          newUser.dataValues.id
+          newUser.dataValues.user_id
         );
         console.log("TOKEN", token);
         const expirationTime = Date.now() + 1000 * 60 * 60 * 48;
-
+          console.log(newUser.dataValues)
         res.status(200).send({
           username: newUser.dataValues.username,
-          userId: newUser.dataValues.id,
+          userId: newUser.dataValues.user_id,
           token,
           expirationTime,
         });
@@ -45,16 +44,13 @@ module.exports = {
       console.log(error);
       res.sendStatus(400);
     }
-
   },
-
-  
 
   login: async (req, res) => {
     console.log("login");
     try {
       const { username, password } = req.body;
-      let userFound = await User.findOne({ where: { username } });
+      let userFound = await users.findOne({ where: { username } });
       if (userFound) {
         const isAuthenticated = bcrypt.compareSync(
           password,

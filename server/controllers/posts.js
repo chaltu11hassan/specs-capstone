@@ -1,21 +1,22 @@
-const { User } = require("../models/user");
-const { Post } = require("../models/post");
+const { posts } = require("../models/post");
+const { users } = require("../models/user");
+
 
 module.exports = {
   viewAllPosts: async (req, res) => {
-    console.log("posts");
+    // console.log("posts");
     try {
-      const posts = await Post.findAll({
+      const posts = await posts.findAll({
         where: { privateStatus: false },
         include: [
           {
-            model: User,
+            model: users,
             required: true,
             attributes: ["username"],
           },
         ],
       });
-      console.log(posts);
+      // console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
       console.log(error);
@@ -24,14 +25,14 @@ module.exports = {
     }
   },
   viewCurrentPosts: async (req, res) => {
-    console.log("current posts");
+    console.log("current posts", req.params);
     try {
-      const posts = await Post.findAll({
-        where: { userId: req.params.userId },
-        include: [{ model: User, required: true, attributes: ["username"] }],
+      const posts = await posts.findAll({
+        where: { user_id: req.params.userId },
+        include: [{ model: users, required: true, attributes: ["username"] }],
       });
-      console.log(posts);
       res.status(200).send(posts);
+      // console.log(posts);
     } catch (error) {
       console.log(error);
       console.log("Error in viewCurrentPosts");
@@ -43,7 +44,7 @@ module.exports = {
     console.log("add post");
     try {
       const { title, content, status, userId } = req.body;
-      await Post.create({ title, content, privateStatus: status, userId });
+      await posts.create({ title, content, privateStatus: status, userId });
       ////////////////////////////////////////////////////////////////
       res.sendStatus(200);
     } catch (error) {
@@ -58,7 +59,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { status } = req.body;
-      await Post.update({ privateStatus: status }, { where: { id: +id } });
+      await posts.update({ privateStatus: status }, { where: { id: +id } });
       res.sendStatus(200);
     } catch (error) {
       console.log(error);
@@ -70,7 +71,7 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       const { id } = req.params;
-      await Post.destroy({ where: { id: +id } });
+      await posts.destroy({ where: { id: +id } });
       res.sendStatus(200);
     } catch (error) {
       console.log(error);

@@ -5,8 +5,9 @@ const cors = require("cors");
 
 const { SERVER_PORT } = process.env;
 const { sequelize } = require("./controllers/seed");
-const { User } = require("./models/user");
-const { Post } = require("./models/post");
+const { users } = require("./models/user");
+const { posts } = require("./models/post");
+const { comments } = require("./models/comments");
 
 const { isAuthenticated } = require("./middleware/isAuthenticated");
 
@@ -25,8 +26,11 @@ app.use(express.json());
 app.use(cors());
 
 /////////////////////////////////////////
-User.hasMany(Post);
-Post.belongsTo(User);
+users.hasMany(posts);
+posts.belongsTo(users);
+comments.belongsTo(posts);
+users.hasMany(comments);
+
 /////////////////////////////////////////
 
 app.post("/register", register);
@@ -38,10 +42,10 @@ app.post("/posts", isAuthenticated, addNewPost);
 app.put("/posts/:id", isAuthenticated, editPost);
 app.delete("/posts/:id", isAuthenticated, deletePost);
 
-// sequelize
-//   .sync({ force: true }) //drops tables if any exists
 sequelize
-  .sync()
+  .sync({ force: true }) //drops tables if any exists
+// sequelize
+//   .sync()
   .then(() => {
     app.listen(SERVER_PORT, () => {
       console.log(`Server running on port ${SERVER_PORT}`);
