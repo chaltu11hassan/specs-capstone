@@ -7,7 +7,7 @@ console.log(typeof users);
 
 module.exports = {
   comments: sequelize.define("comments", {
-    comment_id: {
+    commentId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
@@ -16,19 +16,19 @@ module.exports = {
 
     //these are not needed when using ORM
 
-    // user_id: {
+    // userId: {
     //   type: DataTypes.INTEGER,
     //   references: {
     //     model: users,
-    //     key: "user_id",
+    //     key: "userId",
     //   },
     // },
 
-    // post_id: {
+    // postId: {
     //   type: DataTypes.INTEGER,
     //   references: {
     //     model: posts,
-    //     key: "post_id",
+    //     key: "postId",
     //   },
     // },
 

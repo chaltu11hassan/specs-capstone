@@ -5,7 +5,7 @@ const { sequelize } = require("../controllers/seed");
 
 module.exports = {
   posts: sequelize.define("posts", {
-    post_id: {
+    postId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
@@ -14,11 +14,11 @@ module.exports = {
 
     //these are not needed when using ORM
 
-    // user_id: {
+    // userId: {
     //   type: DataTypes.INTEGER,
     //   references: {
     //     model: users,
-    //     // key: "user_id",
+    //     // key: "userId",
     //   },
     // },
     title: DataTypes.STRING,

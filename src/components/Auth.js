@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../store/authContext";
 import axios from "axios";
 
-
 const baseURL = "http://localhost:4000";
 
 const Auth = () => {
@@ -26,6 +25,7 @@ const Auth = () => {
       .then((res) => {
         console.log("after authorization", res.data.userId);
         authCtx.login(res.data.token, res.data.expirationTime, res.data.userId);
+        window.location.reload();
       })
       .catch((err) => {
         setUsername("");

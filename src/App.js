@@ -16,7 +16,10 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={authCtx.token ? <Home /> : <Navigate to="/auth" />}
+        />
         <Route
           path="/auth"
           element={!authCtx.token ? <Auth /> : <Navigate to="/" />}

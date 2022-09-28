@@ -3,7 +3,7 @@ const { sequelize } = require("../controllers/seed");
 
 module.exports = {
   users: sequelize.define("users", {
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,

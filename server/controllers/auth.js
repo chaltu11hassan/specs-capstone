@@ -2,10 +2,12 @@ require("dotenv").config();
 
 const { SECRET } = process.env;
 
+const { users } = require("../models/user");
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { users } = require("../models/user");
+const { restart } = require("nodemon");
 
 const createToken = (username, id) => {
   return jwt.sign({ username, id }, SECRET, { expiresIn: "2 days" });
@@ -25,14 +27,14 @@ module.exports = {
         const newUser = await users.create({ username, hashedPass: hash });
         const token = createToken(
           newUser.dataValues.username,
-          newUser.dataValues.user_id
+          newUser.dataValues.userId
         );
         console.log("TOKEN", token);
         const expirationTime = Date.now() + 1000 * 60 * 60 * 48;
-          console.log(newUser.dataValues)
+        console.log(newUser.dataValues);
         res.status(200).send({
           username: newUser.dataValues.username,
-          userId: newUser.dataValues.user_id,
+          userId: newUser.dataValues.userId,
           token,
           expirationTime,
         });

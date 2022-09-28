@@ -13,14 +13,15 @@ const Home = () => {
     axios
       .get(`${baseURL}/posts`)
       .then((res) => {
-        if (userId) {
-          // const otherPosts = res.data.filter((post) => userId !== post.userId);
-          //       setPosts(otherPosts)
-          //   } else {
-          //       setPosts(res.data)
-          //   }
-          setPosts(res.data);
-        }
+        // if (userId) {
+        //   // const otherPosts = res.data.filter(
+        //   //   (post) => userId !== post.userId);
+        //   //       setPosts(otherPosts)
+        //   //   } else {
+        //   //       setPosts(res.data)
+        //     }
+        //   setPosts(res.data);
+        console.log(res.data)
       })
       .catch((error) => {
         console.log(error);
