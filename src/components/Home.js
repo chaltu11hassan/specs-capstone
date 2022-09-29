@@ -5,33 +5,38 @@ import AuthContext from "../store/authContext";
 const baseURL = "http://localhost:4000";
 
 const Home = () => {
-  const { userId } = useContext(AuthContext);
+  const { userId} = useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    console.log(userId);
     axios
       .get(`${baseURL}/posts`)
       .then((res) => {
+       //
         // if (userId) {
-        //   // const otherPosts = res.data.filter(
-        //   //   (post) => userId !== post.userId);
-        //   //       setPosts(otherPosts)
-        //   //   } else {
-        //   //       setPosts(res.data)
+        //   const otherPosts = res.data.filter(
+        //     (post) => userId !== post.userId);
+        //         setPosts(otherPosts)
+        //     } else {
+        //         setPosts(res.data)
         //     }
-        //   setPosts(res.data);
-        console.log(res.data)
+        //
+        setPosts(res.data);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [userId]);
 
+  //fetching associations (sequeilize docs)
   const postsMapped = posts.map((post) => {
     return (
       <div className="card-for-post" key={post.id}>
-        <h4>{post.user.username}</h4>
+        {/* <h4>{post.user?.userId}</h4> */}
+        <h4>{post.user?.username}</h4>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
       </div>

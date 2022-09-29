@@ -1,8 +1,9 @@
+// import Sequelize from "sequelize";
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../controllers/seed");
 
 module.exports = {
-  users: sequelize.define("users", {
+  User: sequelize.define("user", {
     userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,

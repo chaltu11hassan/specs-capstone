@@ -9,12 +9,14 @@ const Profile = () => {
   const [posts, setPosts] = useState([]);
 
   const getMyPosts = useCallback(() => {
+    console.log("profile", userId);
+
     axios
       .get(`${baseURL}/userposts/${userId}`)
       .then((res) => {
         console.log(res.data);
         setPosts(res.data);
-        console.log(posts)
+        // console.log(posts);
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +25,7 @@ const Profile = () => {
 
   useEffect(() => {
     getMyPosts();
-  }, [getMyPosts]);
+  }, [userId]);
 
   const updateMyPost = (id, status) => {
     axios
@@ -53,7 +55,7 @@ const Profile = () => {
 
   const postsMapped = posts.map((post) => {
     return (
-      <div className="card-for-post" key={post.id}>
+      <div className="card-for-post" key={post.postId}>
         <h4>{post.user.username}</h4>
         <h3>{post.title}</h3>
         <p>{post.content}</p>
@@ -62,7 +64,7 @@ const Profile = () => {
             <button
               className="edit-post-button"
               onClick={() => {
-                updateMyPost(post.id, post.privateStatus);
+                updateMyPost(post.postId, post.privateStatus);
               }}
             >
               {post.privateStatus ? "Make Public Post" : "Make Private Post"}
@@ -71,7 +73,7 @@ const Profile = () => {
               className="edit-post-button"
               style={{ marginLeft: 10 }}
               onClick={() => {
-                deleteMyPost(post.id);
+                deleteMyPost(post.postId);
               }}
             >
               Delete Post

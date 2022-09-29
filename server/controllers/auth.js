@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const { SECRET } = process.env;
 
-const { users } = require("../models/user");
+const { User } = require("../models/user");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -18,13 +18,13 @@ module.exports = {
     console.log("register", SECRET);
     try {
       const { username, password } = req.body;
-      let userFound = await users.findOne({ where: { username } });
+      let userFound = await User.findOne({ where: { username } });
       if (userFound) {
         res.status(400).send("cannot create new account");
       } else {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-        const newUser = await users.create({ username, hashedPass: hash });
+        const newUser = await User.create({ username, hashedPass: hash });
         const token = createToken(
           newUser.dataValues.username,
           newUser.dataValues.userId
@@ -50,7 +50,7 @@ module.exports = {
     console.log("login");
     try {
       const { username, password } = req.body;
-      let userFound = await users.findOne({ where: { username } });
+      let userFound = await User.findOne({ where: { username } });
       if (userFound) {
         const isAuthenticated = bcrypt.compareSync(
           password,
@@ -59,12 +59,12 @@ module.exports = {
         if (isAuthenticated) {
           const token = createToken(
             userFound.dataValues.username,
-            userFound.dataValues.id
+            userFound.dataValues.userId
           );
           const expirationTime = Date.now() + 1000 * 60 * 60 * 48;
           res.status(200).send({
             username: userFound.dataValues.username,
-            userId: userFound.dataValues.id,
+            userId: userFound.dataValues.userId,
             token,
             expirationTime,
           });

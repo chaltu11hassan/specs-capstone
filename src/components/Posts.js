@@ -3,7 +3,7 @@ import AuthContext from "../store/authContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = "http://localhost:4000"
+const baseURL = "http://localhost:4000";
 
 const Posts = () => {
   const { token, userId } = useContext(AuthContext);
@@ -15,6 +15,7 @@ const Posts = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(userId);
 
     axios
       .post(
@@ -27,14 +28,13 @@ const Posts = () => {
         }
       )
       .then(() => {
-        navigate("/profile");
+        navigate("/profile"); 
       })
       .catch((error) => console.log(error));
   };
 
   return (
     <main className="posts-main">
-      
       <form className="post-form" onSubmit={handleSubmit}>
         Create New Post
         <input
@@ -55,7 +55,6 @@ const Posts = () => {
             setContent(event.target.value);
           }}
         />
-        
         <div className="status-container">
           <div className="status-buttons">
             <input
@@ -77,6 +76,7 @@ const Posts = () => {
               type="radio"
               name="status"
               value={false}
+              checked={true}
               onChange={(event) => {
                 setStatus(event.target.value);
               }}

@@ -23,9 +23,9 @@ const Auth = () => {
     axios
       .post(register ? `${baseURL}/register` : `${baseURL}/login`, body)
       .then((res) => {
-        console.log("after authorization", res.data.userId);
+        console.log("after authorization", res.data);
         authCtx.login(res.data.token, res.data.expirationTime, res.data.userId);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((err) => {
         setUsername("");

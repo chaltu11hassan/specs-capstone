@@ -1,10 +1,8 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../controllers/seed");
 
-// const users = require("./user");
-
 module.exports = {
-  posts: sequelize.define("posts", {
+  Post: sequelize.define("post", {
     postId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -17,7 +15,7 @@ module.exports = {
     // userId: {
     //   type: DataTypes.INTEGER,
     //   references: {
-    //     model: users,
+    //     model: User,
     //     // key: "userId",
     //   },
     // },

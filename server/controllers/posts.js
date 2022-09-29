@@ -1,24 +1,20 @@
-const { posts } = require("../models/post");
-const { users } = require("../models/user");
+const { Post } = require("../models/post");
+const { User } = require("../models/user");
 
 module.exports = {
   viewAllPosts: async (req, res) => {
     // console.log("posts");
     try {
-      const posts = await posts.findAll(
-        //
-        // {
-        //   where: { privateStatus: false },
-        //   include: [
-        //     {
-        //       model: users,
-        //       required: true,
-        //       attributes: ["username"],
-        //     },
-        //   ],
-        // }
-        //
-      );
+      const posts = await Post.findAll({
+        where: { privateStatus: false },
+        include: [
+          {
+            model: User,
+            required: true,
+            attributes: ["username"],
+          },
+        ],
+      });
       console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
@@ -31,12 +27,12 @@ module.exports = {
   viewCurrentPosts: async (req, res) => {
     console.log("current posts", req.params);
     try {
-      const posts = await posts.findAll({
-        // where: { userId: req.params.userId },
-        where: { privateStatu: true },
+      const posts = await Post.findAll({
+        where: { userId: +req.params.userId },
+        // where: { privateStatus: true },
         include: [
           {
-            model: users,
+            model: User,
             required: true,
             attributes: ["username"],
           },
@@ -55,7 +51,12 @@ module.exports = {
     // console.log("add post");
     try {
       const { title, content, status, userId } = req.body;
-      await posts.create({ title, content, privateStatus: status, userId });
+      await Post.create({
+        title,
+        content,
+        privateStatus: status,
+        userId: +userId,
+      });
       res.sendStatus(200);
     } catch (error) {
       console.log("error in adding post");
@@ -69,7 +70,7 @@ module.exports = {
     try {
       const { postId } = req.params;
       const { status } = req.body;
-      await posts.update(
+      await Post.update(
         { privateStatus: status },
         { where: { postId: +postId } }
       );
@@ -85,7 +86,7 @@ module.exports = {
     // console.log("delete post");
     try {
       const { postId } = req.params;
-      await posts.destroy({ where: { postId: +postId } });
+      await Post.destroy({ where: { postId: +postId } });
       res.sendStatus(200);
     } catch (error) {
       console.log("error deleting post");
