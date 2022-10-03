@@ -7,7 +7,7 @@ const { User } = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { restart } = require("nodemon");
+// const { restart } = require("nodemon");
 
 const createToken = (username, id) => {
   return jwt.sign({ username, id }, SECRET, { expiresIn: "2 days" });

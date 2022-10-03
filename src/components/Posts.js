@@ -3,6 +3,8 @@ import AuthContext from "../store/authContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import Comment from "./Comment";
+
 const baseURL = "http://localhost:4000";
 
 const Posts = () => {
@@ -12,6 +14,7 @@ const Posts = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [status, setStatus] = useState(true);
+  // const [image, setImage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,7 +31,7 @@ const Posts = () => {
         }
       )
       .then(() => {
-        navigate("/profile"); 
+        navigate("/profile");
       })
       .catch((error) => console.log(error));
   };
@@ -55,28 +58,34 @@ const Posts = () => {
             setContent(event.target.value);
           }}
         />
+        {/* <input className="post-image"
+         type="text"
+         name="image"
+         placeholder="Image URL"
+         src={image}
+         onChange={(event)=>{setImage(event.target.value)}}
+         /> */}
         <div className="status-container">
           <div className="status-buttons">
             <input
-              id="private-status"
               type="radio"
               name="status"
+              id="private-status"
               value={true}
-              checked={true}
               onChange={(event) => {
                 setStatus(event.target.value);
               }}
+              checked={true}
             />
             <label htmlFor="private-status">Private</label>
           </div>
 
           <div className="status-buttons">
             <input
-              id="public-status"
               type="radio"
               name="status"
+              id="public-status"
               value={false}
-              checked={true}
               onChange={(event) => {
                 setStatus(event.target.value);
               }}

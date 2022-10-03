@@ -102,7 +102,7 @@ nav{
   flex-direction: column;
   background-color: black;
   color: white;
-  width: 300px;
+  width: 250px;
   height: 250px;
   padding: 20px;
   text-align: center;
@@ -142,6 +142,46 @@ nav{
   margin: 10px;
 }
 
+/* ----------------------------Comments---------------------------------------------------- */
+
+.comment-main{
+  align-items: center;
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.comment-form{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  border: solid bisque 1px;
+  border-radius: 5px;
+  /* align-items: center; */
+}
+
+.comment-input{
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------Profile---------------------------------------------------- */
 
 .post-card-main{
@@ -155,8 +195,9 @@ nav{
 }
 .card-for-post{
   background-color: black;
-  width: 300px;
-  height: 250px;
+  width: 500px;
+  height: fit-content;
+  overflow-y: scroll;
   border: solid bisque 5px;
   border-radius: 5px;
   color: white;

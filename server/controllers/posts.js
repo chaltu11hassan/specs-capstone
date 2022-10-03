@@ -15,7 +15,6 @@ module.exports = {
           },
         ],
       });
-      console.log(posts);
       res.status(200).send(posts);
     } catch (error) {
       console.log("Error in viewAllPosts");
@@ -25,7 +24,7 @@ module.exports = {
   },
 
   viewCurrentPosts: async (req, res) => {
-    console.log("current posts", req.params);
+    // console.log("current posts", req.params);
     try {
       const posts = await Post.findAll({
         where: { userId: +req.params.userId },
@@ -55,7 +54,8 @@ module.exports = {
         title,
         content,
         privateStatus: status,
-        userId: +userId,
+        userId,
+        // : +userId,
       });
       res.sendStatus(200);
     } catch (error) {

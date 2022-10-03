@@ -10,15 +10,7 @@ module.exports = {
       primaryKey: true,
     },
 
-    //these are not needed when using ORM
 
-    // userId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: User,
-    //     // key: "userId",
-    //   },
-    // },
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
     privateStatus: DataTypes.BOOLEAN,

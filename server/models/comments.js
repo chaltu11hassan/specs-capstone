@@ -22,15 +22,11 @@ module.exports = {
     //   },
     // },
 
-    // postId: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: posts,
-    //     key: "postId",
-    //   },
-    // },
+    id: {
+      type: DataTypes.INTEGER,
+    },
 
-    title: DataTypes.STRING,
+   
     content: DataTypes.TEXT,
     privateStatus: DataTypes.BOOLEAN,
   }),
