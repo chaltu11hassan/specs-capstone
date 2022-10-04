@@ -8,6 +8,7 @@ const baseURL = "http://localhost:4000";
 const Comment = (props) => {
   const { postId } = props;
   const { token, userId } = useContext(AuthContext);
+
   const navigate = useNavigate();
   console.log(props.postId);
 

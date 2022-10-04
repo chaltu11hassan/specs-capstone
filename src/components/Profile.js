@@ -9,22 +9,22 @@ import SinglePost from "./Singlepost";
 const baseURL = "http://localhost:4000";
 
 const Profile = (props) => {
-  const { postId, commentId } = props;
+  const { postId } = props;
 
-  const { userId, token } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
 
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
 
   const getMyPosts = useCallback(() => {
-    // console.log("profile", userId);
+    console.log("profile", userId);
 
     axios
       .get(`${baseURL}/posts/${userId}`)
       .then((res) => {
         console.log(res.data);
         setPosts(res.data);
-        // console.log(posts);
+        console.log(posts);
       })
       .catch((error) => {
         console.log(error);
@@ -51,7 +51,7 @@ const Profile = (props) => {
   const postsMapped = posts.map((post) => {
     return (
       <SinglePost
-      key={post.postId}
+        key={post.postId}
         post={post}
         getMyPosts={getMyPosts}
         getComments={getComments}
@@ -68,7 +68,6 @@ const Profile = (props) => {
     </main>
   );
 
-  // return <main className="post-card-main">{postsMapped}</main>;
 };
 
 export default Profile;

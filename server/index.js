@@ -66,7 +66,7 @@ app.delete("comments/:commentId", isAuthenticated, deleteComment);
 sequelize
   .sync()
   .then(() => {
-    //////
+    //////////////////////////////////////////////////////////////////
     // User.create({
     //   username: "chaltu12hassan",
     //   hashedPass:
@@ -89,7 +89,7 @@ sequelize
     //     privateStatus: false,
     //   },
     // ]);
-    /////
+    //////////////////////////////////////////////////////////////////////
     app.listen(SERVER_PORT, () => {
       console.log(`Server running on port ${SERVER_PORT}`);
     });

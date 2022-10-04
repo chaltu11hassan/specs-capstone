@@ -18,7 +18,7 @@ module.exports = {
       });
       res.status(200).send(comments);
     } catch (error) {
-      console.log("Error in seeComments");
+      console.log("Error in getComments");
       console.log(error);
       res.sendStatus(400);
     }

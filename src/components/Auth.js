@@ -2,6 +2,36 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../store/authContext";
 import axios from "axios";
 
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+//*Material UI
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+// import * as React from 'react';
+import Button from "@mui/material/Button";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import SendIcon from "@mui/icons-material/Send";
+// import Stack from "@mui/material/Stack";
+// import Divider from "@mui/material/Divider";
+// import { styled } from "@mui/material/styles";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { teal, blueGrey } from "@mui/material/colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: teal[500],
+    },
+    secondary: {
+      main: blueGrey[900],
+    },
+  },
+});
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
 const baseURL = "http://localhost:4000";
 
 const Auth = () => {
@@ -35,36 +65,48 @@ const Auth = () => {
 
   return (
     <main className="auth-main">
-      <h2>Welcome to Miaa'waa: a delicious journey</h2>
-      <form className="auth-form" onSubmit={submitHandler}>
-        <input
-          className="auth-input"
-          type="text"
-          placeholder="enter username"
-          value={username}
-          onChange={(event) => {
-            setUsername(event.target.value);
+      <h2 className="welcome">Welcome to Miaa'waa: a delicious journey</h2>
+      <ThemeProvider theme={theme}>
+        <form className="auth-form" onSubmit={submitHandler}>
+          <input
+            className="auth-input"
+            type="text"
+            placeholder="enter username"
+            value={username}
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          />
+          <br></br>
+
+          <input
+            className="auth-input"
+            type="password"
+            placeholder="enter password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+          <br></br>
+
+          <button className="auth-btn1">
+            {register ? "Register" : "Login"}
+          </button>
+        </form>
+        <br></br>
+        <Button
+          variant="outlined"
+          color="secondary"
+          size="small"
+          className="auth-btn"
+          onClick={() => {
+            setRegister(!register);
           }}
-        />
-        <input
-          className="auth-input"
-          type="password"
-          placeholder="enter password"
-          value={password}
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-        <button className="auth-btn">{register ? "Register" : "Login"}</button>
-      </form>
-      <button
-        className="auth-btn"
-        onClick={() => {
-          setRegister(!register);
-        }}
-      >
-        Need to {register ? "Login" : "Register"}?
-      </button>
+        >
+          Click here to {register ? "Login" : "Register"}
+        </Button>
+      </ThemeProvider>
     </main>
   );
 };

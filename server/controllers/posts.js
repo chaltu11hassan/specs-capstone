@@ -54,8 +54,7 @@ module.exports = {
         title,
         content,
         privateStatus: status,
-        userId,
-        // : +userId,
+        userId: +userId,
       });
       res.sendStatus(200);
     } catch (error) {
