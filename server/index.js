@@ -26,9 +26,6 @@ const {
   deleteComment,
 } = require("./controllers/comments");
 
-// const user = require("./models/user");
-// const post = require("./models/post");
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -41,11 +38,6 @@ Post.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 Comment.belongsTo(Post, { foreignKey: "id", onDelete: "CASCADE" });
 Comment.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 
-// User.hasMany(posts);
-// posts.belongsTo(User, { foreignKey: "userId" });
-// User.hasMany(comments);
-// posts.hasMany(comments);
-// comments.belongsTo(posts, { foreignKey: "id" });
 /////////////////////////////////////////
 
 app.post("/register", register);
