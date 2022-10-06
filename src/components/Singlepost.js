@@ -16,14 +16,21 @@ import Stack from "@mui/material/Stack";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { teal } from "@mui/material/colors";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: teal[500],
+      main: "#fea034",
+      // main: teal[500],
+      // main: "#219a80;",
     },
     secondary: {
-      main: "#26a69a",
+      // main: "#fff",
+      // main: "#000000",
+      main: "#000000",
+      // "#00bfa5",
     },
   },
 });
@@ -33,7 +40,7 @@ const theme = createTheme({
 const baseURL = "http://localhost:4000";
 
 const SinglePost = (props) => {
-  const { commentId, post, postId, getMyPosts } = props;
+  const { post, postId, getMyPosts } = props;
 
   const { userId, token } = useContext(AuthContext);
 
@@ -56,17 +63,17 @@ const SinglePost = (props) => {
     getComments();
   }, [getComments]);
 
-  const deleteComment = (commentId) => {
+  const deleteMyComment = (commentId) => {
     axios
-      .delete(`${baseURL}/comments/${commentId}`, 
-      {
+      .delete(`${baseURL}/comments/${commentId}`, {
         headers: { authorization: token },
-      }
-      )
+      })
       .then(() => {
         getComments();
+        // getMyPosts();
       })
       .catch((error) => {
+        console.log("this call is not working");
         console.log(error);
       });
   };
@@ -102,59 +109,63 @@ const SinglePost = (props) => {
   return (
     <div className="card-for-post" key={post.postId}>
       <ThemeProvider theme={theme}>
-        <div className="post-content">
-          <h4 className="username">{post.user.username}</h4>
-          <h3>{post.title}</h3>
-          <p>{post.content}</p>
-          {userId === post.userId && (
-            <div className="edit-post-buttons">
-              <Stack direction="row" spacing={2}>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  color="primary"
-                  className="edit-post-button"
-                  onClick={() => {
-                    updateMyPost(post.postId, post.privateStatus);
-                  }}
-                >
-                  {post.privateStatus
-                    ? "Make Post Public"
-                    : "Make Post Private "}
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  color="secondary"
-                  startIcon={<DeleteIcon />}
-                  className="edit-post-button"
-                  onClick={() => {
-                    deleteMyPost(post.postId);
-                  }}
-                >
-                  Delete Post
-                </Button>
-              </Stack>
-            </div>
-          )}
-        </div>
-        {/* __________________________________________________ */}
-        <section className="comment-section">
+        <section className="post-section">
+          <div className="post-content">
+            <h3 className="username">{post.user.username}</h3>
+            <h1>{post.title}</h1>
+            <p className="post-p">{post.content}</p>
+            {userId === post.userId && (
+              <div className="edit-post-buttons">
+                <Stack direction="row" spacing={2}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                    className="edit-post-button"
+                    startIcon={
+                      post.privateStatus ? <LockOpenIcon /> : <LockIcon />
+                    }
+                    onClick={() => {
+                      updateMyPost(post.postId, post.privateStatus);
+                    }}
+                  >
+                    {post.privateStatus
+                      ? "Make Recipe Public"
+                      : "Make Recipe Private"}
+                  </Button>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                    startIcon={<DeleteIcon />}
+                    className="edit-post-button"
+                    onClick={() => {
+                      deleteMyPost(post.postId);
+                    }}
+                  >
+                    Delete Recipe
+                  </Button>
+                </Stack>
+              </div>
+            )}
+          </div>
+          {/* __________________________________________________ */}
           <Comment postId={post.postId} />
           {comments.map((comment) => {
             return (
               <main key={comment.commentId} className="comment-card">
                 <h4 className="username">{comment.user.username}</h4>
-                <p className="comment">{comment.content}</p>
+                <p className="comment-p">{comment.content}</p>
                 {userId === comment.userId && (
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     size="small"
                     color="secondary"
                     type="submit"
+                    startIcon={<DeleteIcon />}
                     className="delete-comment"
                     onClick={() => {
-                      deleteComment(comment.commentId);
+                      deleteMyComment(comment.commentId);
                     }}
                   >
                     Delete Comment

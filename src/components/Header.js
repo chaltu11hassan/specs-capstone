@@ -16,14 +16,14 @@ import Stack from "@mui/material/Stack";
 // import { styled } from "@mui/material/styles";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
-
+import RamenDiningIcon from "@mui/icons-material/RamenDining";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-
 import Box from "@mui/material/Box";
 import { pink } from "@mui/material/colors";
 import SvgIcon from "@mui/material/SvgIcon";
 import Avatar from "@mui/material/Avatar";
+import PersonIcon from "@mui/icons-material/Person";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // import IconButton from '@mui/material/IconButton';
 import NavigationIcon from "@mui/icons-material/Navigation";
@@ -110,12 +110,7 @@ const Header = () => {
                   <NavLink style={styleActiveLink} to="profile">
                     <Button
                       variant="outlined"
-                      startIcon={
-                        <Avatar
-                          src="/broken-image.jpg"
-                          sx={{ width: 25, height: 25 }}
-                        />
-                      }
+                      startIcon={<PersonIcon sx={{ width: 25, height: 25 }} />}
                     >
                       Profile
                     </Button>
@@ -126,10 +121,10 @@ const Header = () => {
                     <Button
                       variant="outlined"
                       startIcon={
-                        <AssignmentIcon sx={{ width: 25, height: 25 }} />
+                        <RamenDiningIcon sx={{ width: 25, height: 25 }} />
                       }
                     >
-                      Post
+                      Create Recipe
                     </Button>
                   </NavLink>
                 </li>

@@ -43,8 +43,8 @@ const Posts = () => {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const [status, setStatus] = useState(true);
- 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,6 +69,7 @@ const Posts = () => {
   return (
     <main className="posts-main">
       <ThemeProvider theme={theme}>
+        <h2 id="welcome-post">Start Your Delicious Journey Here</h2>
         <form className="post-form" onSubmit={handleSubmit}>
           Create New Recipe
           <input
@@ -90,7 +91,6 @@ const Posts = () => {
               setContent(event.target.value);
             }}
           />
-          <br></br>
           <div className="status-container">
             <div className="status-buttons">
               <input

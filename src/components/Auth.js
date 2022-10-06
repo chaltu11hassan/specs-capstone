@@ -21,10 +21,11 @@ import { teal, blueGrey } from "@mui/material/colors";
 const theme = createTheme({
   palette: {
     primary: {
-      main: teal[500],
+      // main: teal[500],
+      main: "#0000",
     },
     secondary: {
-      main: blueGrey[900],
+      main: "#fff",
     },
   },
 });
@@ -51,7 +52,7 @@ const Auth = () => {
     };
 
     axios
-      .post(register ? `${baseURL}/register` : `${baseURL}/login`, body)
+      .post(register ? `${baseURL}/login ` : `${baseURL}/register`, body)
       .then((res) => {
         console.log("after authorization", res.data);
         authCtx.login(res.data.token, res.data.expirationTime, res.data.userId);
@@ -64,50 +65,57 @@ const Auth = () => {
   };
 
   return (
-    <main className="auth-main">
-      <h2 className="welcome">Welcome to Miaa'waa: a delicious journey</h2>
-      <ThemeProvider theme={theme}>
-        <form className="auth-form" onSubmit={submitHandler}>
-          <input
-            className="auth-input"
-            type="text"
-            placeholder="enter username"
-            value={username}
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <br></br>
+   
+      <main className="auth-main">
+        <h2 className="welcome">Welcome to Miaa'waa: a delicious journey</h2>
+        <ThemeProvider theme={theme}>
+          <form className="auth-form" onSubmit={submitHandler}>
+            <input
+              className="auth-input"
+              type="text"
+              placeholder="enter username"
+              value={username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+            <br></br>
 
-          <input
-            className="auth-input"
-            type="password"
-            placeholder="enter password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
-          <br></br>
+            <input
+              className="auth-input"
+              type="password"
+              placeholder="enter password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
+            <br></br>
 
-          <button className="auth-btn1">
-            {register ? "Register" : "Login"}
-          </button>
-        </form>
-        <br></br>
-        <Button
-          variant="outlined"
-          color="secondary"
-          size="small"
-          className="auth-btn"
-          onClick={() => {
-            setRegister(!register);
-          }}
-        >
-          Click here to {register ? "Login" : "Register"}
-        </Button>
-      </ThemeProvider>
-    </main>
+            <Button
+              variant="outlined"
+              color="secondary"
+              type="submit"
+              className="auth-btn1"
+            >
+              {register ? "Login" : "Register"}
+            </Button>
+          </form>
+          <br></br>
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="small"
+            className="auth-btn"
+            onClick={() => {
+              setRegister(!register);
+            }}
+          >
+            Click here to {register ? "Register" : "Login"}
+          </Button>
+        </ThemeProvider>
+      </main>
+    
   );
 };
 

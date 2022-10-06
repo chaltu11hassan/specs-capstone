@@ -38,6 +38,9 @@ Post.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 Comment.belongsTo(Post, { foreignKey: "id", onDelete: "CASCADE" });
 Comment.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 
+// Post.hasMany(comments)
+// Comments.belongsTo(post)
+
 /////////////////////////////////////////
 
 app.post("/register", register);
@@ -49,9 +52,14 @@ app.post("/posts", isAuthenticated, addNewPost);
 app.put("/posts/:postId", isAuthenticated, editPost);
 app.delete("/posts/:postId", isAuthenticated, deletePost);
 
+
+
 app.get("/comments/:postId", getComments);
 app.post("/comments", isAuthenticated, addComment);
-app.delete("comments/:commentId", isAuthenticated, deleteComment);
+app.delete("/comments/:commentId", isAuthenticated, deleteComment);
+
+
+
 
 // sequelize
 //   .sync({ force: true }) //drops tables if any exists

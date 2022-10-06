@@ -27,7 +27,7 @@ module.exports = {
   addComment: async (req, res) => {
     // console.log("add comment");
     try {
-      const { content, userId, postId } = req.body;
+      const { content, userId, postId} = req.body;
       await Comment.create({
         content,
         userId,
@@ -45,6 +45,7 @@ module.exports = {
     // console.log("delete comment");
     try {
       const { commentId } = req.params;
+      console.log(commentId);
       await Comment.destroy({ where: { commentId: +commentId } });
       res.sendStatus(200);
     } catch (error) {
