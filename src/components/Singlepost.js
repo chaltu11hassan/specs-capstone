@@ -59,9 +59,9 @@ const SinglePost = (props) => {
   const deleteComment = (commentId) => {
     axios
       .delete(`${baseURL}/comments/${commentId}`, 
-      // {
-      //   headers: { authorization: token },
-      // }
+      {
+        headers: { authorization: token },
+      }
       )
       .then(() => {
         getComments();
