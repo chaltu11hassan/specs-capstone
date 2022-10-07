@@ -59,9 +59,9 @@ const Home = (props) => {
 
 
   return postsMapped.length >= 1 ? (
-    <main className="post-card-main">{postsMapped}</main>
+    <main className="post-card-main-home">{postsMapped}</main>
   ) : (
-    <main className="no-posts">
+    <main className="post-card-main-home">
       <h2>No posts to view on Home, add a post!</h2>
     </main>
   );

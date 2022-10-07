@@ -113,7 +113,7 @@ const SinglePost = (props) => {
           <div className="post-content">
             <h3 className="username">{post.user.username}</h3>
             <h1>{post.title}</h1>
-            <p className="post-p">{post.content}</p>
+            <p className="post-p"><span>{post.content}</span></p>
             {userId === post.userId && (
               <div className="edit-post-buttons">
                 <Stack direction="row" spacing={2}>

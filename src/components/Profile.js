@@ -61,9 +61,9 @@ const Profile = (props) => {
   });
 
   return postsMapped.length >= 1 ? (
-    <main className="post-card-main">{postsMapped}</main>
+    <main className="post-card-main-profile">{postsMapped}</main>
   ) : (
-    <main className="no-posts">
+    <main className="post-card-main-profile">
       <h2>No posts to view on Profile, add a post!</h2>
     </main>
   );

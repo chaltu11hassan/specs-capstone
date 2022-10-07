@@ -43,7 +43,7 @@ const Posts = () => {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [status, setStatus] = useState(true);
 
   const handleSubmit = (event) => {

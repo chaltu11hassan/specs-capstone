@@ -103,7 +103,7 @@ const Auth = () => {
           </form>
           <br></br>
           <Button
-            variant="outlined"
+            variant="contained"
             color="secondary"
             size="small"
             className="auth-btn"

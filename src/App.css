@@ -4,9 +4,12 @@
   align-items: center;
 }
 
-body{
-  background-color: white;
-}
+/* body{
+  /* background-color: white; */
+  /* background: url(https://media.istockphoto.com/vectors/vector-soft-black-background-vector-id1090010178?k=20&m=1090010178&s=612x612&w=0&h=dR1clm2126pBjiHBbmyUmAN5Xm6ZmerFUmiIXu6yn-U=) no-repeat center center fixed;
+ background-size: cover;
+} */
+
 
 
 /* ----------------------Header------------------------------------------ */
@@ -70,9 +73,9 @@ nav{
 
 /* -------------------------Login/Auth-form---------------------------------------- */
 
-.auth-body{
+/* .auth-body{
   background-color: black;
-}
+} */
 
 .auth-main{
   padding: 30px;
@@ -82,13 +85,31 @@ nav{
   text-align: center;
   vertical-align: middle;
   color: white;
-  background-color: black;
+  /* background-color: black; */
   height: 100vh;
+
+
+ /* background: url(https://media.istockphoto.com/vectors/vector-soft-black-background-vector-id1090010178?k=20&m=1090010178&s=612x612&w=0&h=dR1clm2126pBjiHBbmyUmAN5Xm6ZmerFUmiIXu6yn-U=) no-repeat center center fixed; */
+ /* background-size: cover; */
+
+ /* https://media-cldnry.s-nbcnews.com/image/upload/newscms/2020_51/1654072/best-egg-dishes-kb-main-201218.jpg */
+
+ /* https://realfood.tesco.com/media/images/RFO-1400x919-English-breakfast-shakshuka-561dee9b-a2fc-4259-8ff3-426ce5f60235-0-1400x919.jpg */
+
+/* background: url( https://img.freepik.com/premium-photo/assorted-food-dishes-vegetables-meat-fish-black-stone-background-top-view-free-space-your-text_187166-662.jpg?w=2000) no-repeat center center fixed;
+background-size: cover; */
+
+background: url(https://images.ctfassets.net/3s5io6mnxfqz/3pLESMFjNopcam5J5qGcoT/0427544b060a8fd29e3c0b68281d56cf/AdobeStock_191057762.jpeg) no-repeat center center fixed;
+background-size: cover;
+
+
 }
 
 .welcome{
   font-family: Copperplate;
-  color: white;
+  color: black;
+  background-color: white;
+  padding: 15px;
 }
 
 .auth-form{
@@ -100,7 +121,7 @@ nav{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border: solid white 3px;
+  border: solid rgba(255, 255, 255, 0.746) 3px;
   box-shadow: white 15px;
   border-radius: 8px; 
   margin-top: 20px;
@@ -188,6 +209,10 @@ nav{
   align-items: center;
   height: 100vh;
   background-color: black;
+  /* background: url(https://media.istockphoto.com/vectors/vector-soft-black-background-vector-id1090010178?k=20&m=1090010178&s=612x612&w=0&h=dR1clm2126pBjiHBbmyUmAN5Xm6ZmerFUmiIXu6yn-U=) no-repeat center center fixed;
+ background-size: cover; */
+  background: url(https://media-cldnry.s-nbcnews.com/image/upload/newscms/2020_51/1654072/best-egg-dishes-kb-main-201218.jpg) no-repeat center center fixed;
+  background-size: cover;
   color: white;
 }
 
@@ -201,7 +226,7 @@ nav{
   height: 350px;
   padding: 20px;
   text-align: center;
-  border: solid white 3px;
+  border: solid rgba(255, 255, 255, 0.854) 3px;
   box-shadow: white 15px;
   border-radius: 8px; 
   
@@ -209,8 +234,9 @@ nav{
 
 #welcome-post{
   margin-top: -250px;
-  padding: 30px;
-  color: white;
+  padding: 15px;
+  color: black;
+  background-color: white;
   font-family: Copperplate;
   margin-bottom: 30px;
  
@@ -223,13 +249,14 @@ nav{
   border: solid white 3px;
   border-radius: 2px;
 }
-.image-input{
+
+/* .image-input{
   display: flex;
   padding: 10px;
   margin: 10px;
   border: solid white 3px;
   border-radius: 2px;
-}
+} */
 
 .post-textarea{
   display: flex;
@@ -326,22 +353,99 @@ nav{
 
 /* ----------------------------Profile---------------------------------------------------- */
 
-.post-card-main{
-  align-items: center;
+.post-card-main-profile{
+  /* align-items: center;
   padding: 30px;
   align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  /* background-color: black; */
+ 
+  background-color: black;
   /* width: 500px;
-  height: 500px; */
+  height: 500px;  */
+  /* height: 100vh; */
+  /* background: url(https://media.istockphoto.com/vectors/vector-soft-black-background-vector-id1090010178?k=20&m=1090010178&s=612x612&w=0&h=dR1clm2126pBjiHBbmyUmAN5Xm6ZmerFUmiIXu6yn-U=) no-repeat center center fixed;
+ background-size: cover; */
+
+
+
+
+ align-items: center;
+  /* padding: 30px; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  background: url(https://img.delicious.com.au/dZKUbMXr/del/2022/02/del_korean-lava-wraps-163171-1.jpg) no-repeat center center fixed;
+ background-size: cover;
+ 
+  /* background: url(https://www.tastingtable.com/img/gallery/20-delicious-indian-dishes-you-have-to-try-at-least-once/l-intro-1645057933.jpg) no-repeat center center fixed;
+  background-size: cover; */
+  color: white;
+
+
+
 }
+
+.post-card-main-home{
+  /* align-items: center;
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+ 
+  background-color: black;
+  /* width: 500px;
+  height: 500px;  */
+  /* height: 100vh; */
+  /* background: url(https://media.istockphoto.com/vectors/vector-soft-black-background-vector-id1090010178?k=20&m=1090010178&s=612x612&w=0&h=dR1clm2126pBjiHBbmyUmAN5Xm6ZmerFUmiIXu6yn-U=) no-repeat center center fixed;
+ background-size: cover; */
+
+
+
+
+ align-items: center;
+  /* padding: 30px; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  /* background: url(https://jyfmuseums.org/wp-content/uploads/2021/10/Historical-Foodways-top.jpg) no-repeat center center fixed;
+ background-size: cover; */
+ 
+  /* background: url(https://www.tastingtable.com/img/gallery/20-delicious-indian-dishes-you-have-to-try-at-least-once/l-intro-1645057933.jpg) no-repeat center center fixed;
+  background-size: cover; */
+
+  color: white;
+
+  background: url(https://img.apmcdn.org/c31f05e5f61879952c271353e732e4166302b855/uncropped/c8108e-splendid-table-rice-varieties-c-kuvona-istock-gettyimages-1040506198-lede.jpg) no-repeat center center fixed;
+background-size: cover;
+
+
+
+}
+
+
+
+
+
+
+
+
 .card-for-post{
   background-color: black;
   width: 600px;
-  height: fit-content;
+  height:fit-content;
   overflow-y: scroll;
   border: solid white 1px;
   border-radius: 5px;
@@ -362,12 +466,17 @@ nav{
   background-color: white;
   /* background-color: rgb(255, 253, 244); */
   color: black;
-  
   height: fit-content;
   padding: 5px;
   margin: 3px;
   border: solid white;
   border-bottom: solid black 3px; 
+
+  /* font-family: Roboto,Helvetica,sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.56;
+    letter-spacing: .2px;
+    color: #222; */
 }
 
 .post-p{
@@ -378,15 +487,24 @@ nav{
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   word-wrap: break-word;
+
+  /* display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-align: start;
+  align-items: flex-start; */
 }
 
 
 .no-posts-main{
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   border: solid black 2px;
   padding: 10px;
   margin: 50px;
   justify-content: center;
+  color: white;
 }
 
 .edit-post-buttons{
